@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import glob
 import os
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
@@ -68,13 +68,11 @@ print(f'Train: {len(X_train)}, Test: {len(X_test)}')
 
 # Treniranje modela
 print('Treniranje modela...')
-model = RandomForestRegressor(
+model = GradientBoostingRegressor(
     n_estimators=300,
-    max_depth=20,
-    min_samples_leaf=3,
-    max_features=0.7,
-    random_state=42,
-    n_jobs=-1
+    max_depth=6,
+    learning_rate=0.05,
+    random_state=42
 )
 model.fit(X_train, y_train)
 
